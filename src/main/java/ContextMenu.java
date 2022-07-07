@@ -1,14 +1,10 @@
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v100.page.Page;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
-import java.net.URL;
-
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class ContextMenu extends BaseTest {
 

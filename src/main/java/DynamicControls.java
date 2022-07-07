@@ -23,7 +23,10 @@ public class DynamicControls extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
         Assert.assertTrue(CheckboxDisplay(), "Checkbox is on the page");
-driver.findElement(INPUT);
-
+        WebElement input = driver.findElement(INPUT);
+        Assert.assertFalse(input.isEnabled(), "input is enabled");
+        driver.findElement(BUTTON_ENABLE).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
+        Assert.assertTrue(input.isEnabled(), "input is disabled");
     }
 }

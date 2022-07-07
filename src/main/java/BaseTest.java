@@ -17,6 +17,9 @@ public class BaseTest {
     final By CHECKBOX = By.cssSelector("input[type='checkbox']");
     final By BUTTON_REMOVE = By.cssSelector("[onclick='swapCheckbox()']");
     final By INPUT = By.cssSelector("input[type='text']");
+    final By BUTTON_ENABLE = By.cssSelector("[onclick='swapInput()']");
+
+    final By UPLOAD_FILE = By.id("file-upload");
 
     public boolean CheckboxDisplay() {
         try {
@@ -46,12 +49,13 @@ public class BaseTest {
     public By getBUTTON_REMOVE() {
         return BUTTON_REMOVE;
     }
+
+
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }
-//
-//    @AfterMethod(alwaysRun = true)
-//    public void tearDown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
-}
+
