@@ -34,13 +34,6 @@ public class BaseTest {
             return true;
         }
     }
-
-
-    @BeforeClass
-    public void setPathVariable() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-    }
-
     @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
@@ -52,14 +45,13 @@ public class BaseTest {
         options.setExperimentalOption("prefs", chromePref);
         driver = new ChromeDriver(options);
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.get("http://the-internet.herokuapp.com/");
         System.out.println();
     }
-
-
-
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
